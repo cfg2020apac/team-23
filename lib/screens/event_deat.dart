@@ -1,12 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:team_23/providers/event.dart';
 import 'package:team_23/providers/eventDeats.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
+import 'package:youtube_player_flutter/youtube_player_flutter.dart';
+import 'package:flutter_linkify/flutter_linkify.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class EventDeat extends StatelessWidget {
   final Event event;
   Future<eventDeats> deats;
+  static const double pad = 10.0;
 
   EventDeat({Key key, @required this.event}) : super(key: key);
 
@@ -46,12 +51,48 @@ class EventDeat extends StatelessWidget {
             future: deats,
             builder: (context, snapshot) {
               if (snapshot.hasData) {
+                YoutubePlayerController _controller = YoutubePlayerController(
+                  initialVideoId: snapshot.data.videoUrl,
+                  flags: YoutubePlayerFlags(
+                    autoPlay: true,
+                    mute: true,
+                  ),
+                );
+                //if YouTube doesn't work on IOS see setup in https://pub.dev/packages/flutter_youtube
+
                 return ListView(
                   padding: const EdgeInsets.all(12),
                   children: <Widget>[
-                    Text(snapshot.data.desc),
-                    Text('Entry B'),
-
+                    Container(
+                        margin: const EdgeInsets.all(pad),
+                        child: Image.network(event.thumbUrl)),
+                    Container(
+                        margin: const EdgeInsets.all(pad),
+                        child: YoutubePlayer(controller: _controller)),
+                    Container(
+                        margin: const EdgeInsets.all(pad),
+                        child: Text("For ages " + event.ageMin.toString() + " - "  + event.ageMax.toString())),
+                    Container(
+                        margin: const EdgeInsets.all(pad),
+                        child: Text("Category: " + event.tag)),
+                    Container(
+                        margin: const EdgeInsets.all(pad),
+                        child: Text("Date: " + DateFormat('dd/MM kk:mm').format(event.dateEvent))),
+                    Container(
+                        margin: const EdgeInsets.all(pad),
+                        child: Text("Sign up deadline: " + DateFormat('dd/MM kk:mm').format(event.dateDeadline))),
+                    Container(
+                        margin: const EdgeInsets.all(pad),
+                        child: Linkify (
+                            onOpen: (link) async {
+                              if (await canLaunch(link.url)) {
+                                await launch(link.url);
+                              } else {
+                                throw 'Could not launch $link';
+                              }
+                            },
+                          text: snapshot.data.desc
+                        ))
                   ],
                 );
               } else if (snapshot.hasError) {
