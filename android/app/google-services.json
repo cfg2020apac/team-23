@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "370455464480",
+    "firebase_url": "https://team23blossom.firebaseio.com",
+    "project_id": "team23blossom",
+    "storage_bucket": "team23blossom.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:370455464480:android:30eacbd161220656e28a45",
+        "android_client_info": {
+          "package_name": "com.example.team_23"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "370455464480-4nemtsgjqqjg0ubfrvo8rev6cki8hgbc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD_Tr783cuccLTng2-60yggvdeNEGosIAE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "370455464480-4nemtsgjqqjg0ubfrvo8rev6cki8hgbc.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
