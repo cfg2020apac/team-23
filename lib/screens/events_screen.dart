@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:team_23/providers/event.dart';
 import 'package:team_23/providers/events.dart';
-import 'package:team_23/widgets/event_tile.dart';
+import 'package:team_23/screens/EventTile.dart';
 
 class EventsScreen extends StatefulWidget {
   @override
@@ -10,17 +10,25 @@ class EventsScreen extends StatefulWidget {
 }
 
 class _EventsScreenState extends State<EventsScreen> {
+  List<Event> events;
+  // void didChangeDependencies() {
+  //   Provider.of<Events>(context).fetchandSetEvents();
+  //   events = Provider.of<Events>(context).events;
+  // }
+
   @override
   Widget build(BuildContext context) {
     Provider.of<Events>(context).fetchandSetEvents();
-    List<Event> events = Provider.of<Events>(context).events;
-    return Container(
-      height: MediaQuery.of(context).size.height,
-      child: ListView.builder(
-          itemCount: events.length,
-          itemBuilder: (ctx, index) => Center(
-                child: EventTile(events[index]),
-              )),
-    );
+    events = Provider.of<Events>(context).events;
+
+    return Scaffold(
+        body: Container(
+            child: ListView.builder(
+                itemCount: events.length,
+                itemBuilder: (context, index) {
+                  return EventTile(event: events[index]);
+                },
+              ))
+        );
   }
 }
