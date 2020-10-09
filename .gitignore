@@ -5,3 +5,5 @@ Team*.zip
 *.key
 *.ovpn
 /build/
+/.dart_tool/
+/.packages
