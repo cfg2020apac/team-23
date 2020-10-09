@@ -10,35 +10,25 @@ class EventsScreen extends StatefulWidget {
 }
 
 class _EventsScreenState extends State<EventsScreen> {
-  Future<List<Event>> events;
-  Future<void> didChangeDependencies() {
-    events = Provider.of<Events>(context).fetchandSetEvents();
-  }
+  List<Event> events;
+  // void didChangeDependencies() {
+  //   Provider.of<Events>(context).fetchandSetEvents();
+  //   events = Provider.of<Events>(context).events;
+  // }
 
   @override
   Widget build(BuildContext context) {
+    Provider.of<Events>(context).fetchandSetEvents();
+    events = Provider.of<Events>(context).events;
+
     return Scaffold(
         body: Container(
-          child: RefreshIndicator (
-            child: FutureBuilder<List<Event>>(
-              future: events,
-              builder: (context, snapshot) {
-                if (snapshot.hasData) {
-                  return ListView.builder(
-                    itemCount: snapshot.data.length,
-                    itemBuilder: (context, index) {
-                      return EventTile(event: snapshot.data[index]);
-                    },
-                  );
-                } else if (snapshot.hasError) {
-                  return Text("${snapshot.error}");
-                }
-                return CircularProgressIndicator();
-              },
-            ),
-            onRefresh: didChangeDependencies,
-          ),
-        )
-    );
+            child: ListView.builder(
+                itemCount: events.length,
+                itemBuilder: (context, index) {
+                  return EventTile(event: events[index]);
+                },
+              ))
+        );
   }
 }
