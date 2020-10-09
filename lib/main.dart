@@ -4,6 +4,7 @@ import './screens/user_profile_screen.dart';
 import './screens/events_screen.dart';
 import 'package:provider/provider.dart';
 import './providers/events.dart';
+import 'screens/events_screen.dart';
 
 void main() {
   runApp(MyApp());
