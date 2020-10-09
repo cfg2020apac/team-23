@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import './screens/user_profile_screen.dart';
 import './screens/events_screen.dart';
 import 'package:provider/provider.dart';
 import './providers/events.dart';
@@ -16,10 +17,12 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
           title: 'Flutter Demo',
           theme: ThemeData(
-            primarySwatch: Colors.blue,
+            textTheme:
+                TextTheme(headline1: TextStyle(color: Color(0xff374ABE))),
+            primarySwatch: Colors.amber,
             visualDensity: VisualDensity.adaptivePlatformDensity,
           ),
-          home: EventsScreen()),
+          home: UserProfileScreen()),
     );
   }
 }
