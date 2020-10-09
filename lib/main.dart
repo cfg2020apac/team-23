@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:team_23/screens/home_screen.dart';
+import 'package:team_23/screens/wish_form.dart';
 import 'package:team_23/screens/wishlist.dart';
 import './screens/user_profile_screen.dart';
 import './screens/events_screen.dart';
@@ -24,7 +26,7 @@ class MyApp extends StatelessWidget {
             primarySwatch: Colors.blue,
             visualDensity: VisualDensity.adaptivePlatformDensity,
           ),
-          home: WishList()),
+          home: HomeScreen()),
     );
   }
 }

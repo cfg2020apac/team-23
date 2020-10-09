@@ -27,43 +27,13 @@ class UserProfileScreen extends StatelessWidget {
   ];
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      // appBar: AppBar(
-      //   leading: CircleAvatar(
-      //     child: Image.network(
-      //         'https://i.kinja-img.com/gawker-media/image/upload/t_original/ijsi5fzb1nbkbhxa2gc1.png'),
-      //   ),
-      //   title: Text('Profile'),
-      //   actions: [
-      //     RaisedButton(
-      //       child: Image.network(
-      //         'https://harperlibrary.typepad.com/.a/6a0105368f4fef970b01b7c89530b0970b-800wi',
-      //         colorBlendMode: BlendMode.clear,
-      //       ),
-      //       onPressed: () {
-      //       },
-      //     )
-      //   ],
-      // ),
-      bottomNavigationBar: BottomNavigationBar(
-        backgroundColor: Color(0xff374ABE),
-        items: [
-          BottomNavigationBarItem(
-              icon: Icon(Icons.event), title: Text('Events')),
-          BottomNavigationBarItem(
-              icon: Icon(Icons.list), title: Text('Wishlist')),
-          BottomNavigationBarItem(
-              icon: Icon(Icons.person), title: Text('Profile')),
-          // BottomNavigationBarItem(
-          //     icon: Icon(Icons.person), title: Text('Profile')),
-        ],
-      ),
-      body: Container(
+    return Container(
+        height: MediaQuery.of(context).size.height * 0.8,
         child: Column(
           children: [
             Padding(
               padding: EdgeInsets.symmetric(
-                  vertical: MediaQuery.of(context).size.height * 0.06,
+                  vertical: MediaQuery.of(context).size.height * 0.02,
                   horizontal: MediaQuery.of(context).size.width * 0.06),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -203,8 +173,6 @@ class UserProfileScreen extends StatelessWidget {
               data: data,
             )
           ],
-        ),
-      ),
-    );
+        ));
   }
 }

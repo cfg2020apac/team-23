@@ -7,7 +7,7 @@ class Events with ChangeNotifier {
   List<Event> _events = [];
 
   Future<List<Event>> fetchandSetEvents() async {
-    var url = "https://team23blossom.firebaseio.com/eventFeed.json";
+    var url = "https://team23blossom.firebaseio.com/eventFeed/sample.json";
     final data = await http.get(url);
     print(data.body);
 
