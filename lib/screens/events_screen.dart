@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:team_23/providers/event.dart';
 import 'package:team_23/providers/events.dart';
-import 'package:team_23/screens/EventTile.dart';
+import 'package:team_23/widgets/event_tile.dart';
 
 class EventsScreen extends StatefulWidget {
   @override
@@ -10,35 +10,17 @@ class EventsScreen extends StatefulWidget {
 }
 
 class _EventsScreenState extends State<EventsScreen> {
-  Future<List<Event>> events;
-  Future<void> didChangeDependencies() {
-    events = Provider.of<Events>(context).fetchandSetEvents();
-  }
-
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        body: Container(
-          child: RefreshIndicator (
-            child: FutureBuilder<List<Event>>(
-              future: events,
-              builder: (context, snapshot) {
-                if (snapshot.hasData) {
-                  return ListView.builder(
-                    itemCount: snapshot.data.length,
-                    itemBuilder: (context, index) {
-                      return EventTile(event: snapshot.data[index]);
-                    },
-                  );
-                } else if (snapshot.hasError) {
-                  return Text("${snapshot.error}");
-                }
-                return CircularProgressIndicator();
-              },
-            ),
-            onRefresh: didChangeDependencies,
-          ),
-        )
+    Provider.of<Events>(context).fetchandSetEvents();
+    List<Event> events = Provider.of<Events>(context).events;
+    return Container(
+      height: MediaQuery.of(context).size.height,
+      child: ListView.builder(
+          itemCount: events.length,
+          itemBuilder: (ctx, index) => Center(
+                child: EventTile(events[index]),
+              )),
     );
   }
 }

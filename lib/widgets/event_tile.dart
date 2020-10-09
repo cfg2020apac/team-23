@@ -4,11 +4,11 @@ import 'package:intl/intl.dart';
 
 class EventTile extends StatelessWidget {
   final Event event;
-  EventTile({this.event});
+  EventTile(this.event);
 
   @override
   Widget build(BuildContext context) {
-    print('EventTile'+ event.id);
+    print('EventTile' + event.id);
     print(DateFormat('yyyy-MM-dd – kk:mm').format(event.dateEvent));
     print(event.dateEvent);
     return Padding(

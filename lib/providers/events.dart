@@ -6,14 +6,15 @@ import 'dart:convert';
 class Events with ChangeNotifier {
   List<Event> _events = [];
 
-  Future<List<Event>> fetchandSetEvents() async {
-    var url = "https://team23blossom.firebaseio.com/eventFeed/sample.json";
+  Future<void> fetchandSetEvents() async {
+    var url = "https://team23blossom.firebaseio.com/events.json";
     final data = await http.get(url);
     print(data.body);
 
     final loadedEvents = json.decode(data.body) as Map<String, dynamic>;
+    List<Event> temp = [];
     loadedEvents.forEach((eventId, eventData) {
-      _events.add(Event(
+      temp.add(Event(
         eventId,
         eventData['title'],
         eventData['ageMin'],
@@ -27,8 +28,12 @@ class Events with ChangeNotifier {
         eventData['usersMax'],
       ));
     });
+    _events = temp;
     notifyListeners();
-    return _events;
+  }
+
+  List<Event> get events {
+    return [... _events];
   }
 
   int getLength() {

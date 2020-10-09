@@ -13,7 +13,16 @@ class Event with ChangeNotifier {
   final int users;
   final int usersMax;
 
-  Event(this.id, this.title, this.ageMin, this.ageMax, this.datePost,
-      this.dateDeadline, this.dateEvent, this.tag, this.thumbUrl,
-      this.users, this.usersMax);
+  Event(
+      this.id,
+      this.title,
+      this.ageMin,
+      this.ageMax,
+      this.datePost,
+      this.dateDeadline,
+      this.dateEvent,
+      this.tag,
+      this.thumbUrl,
+      this.users,
+      this.usersMax);
 }

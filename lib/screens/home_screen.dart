@@ -20,13 +20,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   void initState() {
     _screens = [
-      {
-        'id': 0,
-        'title': 'Upcoming Events',
-        'page': Center(
-          child: Text('Hello'),
-        )
-      },
+      {'id': 0, 'title': 'Upcoming Events', 'page': EventsScreen()},
       {'id': 1, 'title': 'WishList', 'page': WishList()},
       {'id': 2, 'title': 'Profile', 'page': UserProfileScreen()}
     ];
