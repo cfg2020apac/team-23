@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:team_23/providers/event.dart';
 import 'package:intl/intl.dart';
+import 'package:team_23/screens/event_deat.dart';
 
 class EventTile extends StatelessWidget {
   final Event event;
@@ -19,6 +20,14 @@ class EventTile extends StatelessWidget {
           leading: Image.network(event.thumbUrl),
           title: Text(event.title),
           subtitle: Text(DateFormat('dd/MM kk:mm').format(event.dateEvent)),
+          onTap: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => EventDeat(event: event),
+              ),
+            );
+          },
         ),
       ),
     );
