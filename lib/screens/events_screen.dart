@@ -11,31 +11,34 @@ class EventsScreen extends StatefulWidget {
 
 class _EventsScreenState extends State<EventsScreen> {
   Future<List<Event>> events;
-  void didChangeDependencies() {
+  Future<void> didChangeDependencies() {
     events = Provider.of<Events>(context).fetchandSetEvents();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
-          child: FutureBuilder<List<Event>>(
-          future: events,
-          builder: (context, snapshot) {
-              if (snapshot.hasData) {
-                return ListView.builder(
-                  itemCount: snapshot.data.length,
-                  itemBuilder: (context, index) {
-                    return EventTile(event: snapshot.data[index]);
-                  },
-                );
-              } else if (snapshot.hasError) {
-                return Text("${snapshot.error}");
-              }
-            return CircularProgressIndicator();
-          },
-        ),
-      )
+        body: Container(
+          child: RefreshIndicator (
+            child: FutureBuilder<List<Event>>(
+              future: events,
+              builder: (context, snapshot) {
+                if (snapshot.hasData) {
+                  return ListView.builder(
+                    itemCount: snapshot.data.length,
+                    itemBuilder: (context, index) {
+                      return EventTile(event: snapshot.data[index]);
+                    },
+                  );
+                } else if (snapshot.hasError) {
+                  return Text("${snapshot.error}");
+                }
+                return CircularProgressIndicator();
+              },
+            ),
+            onRefresh: didChangeDependencies,
+          ),
+        )
     );
   }
 }
