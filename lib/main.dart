@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:team_23/screens/wishlist.dart';
 import './screens/user_profile_screen.dart';
 import './screens/events_screen.dart';
 import 'package:provider/provider.dart';
@@ -19,10 +20,10 @@ class MyApp extends StatelessWidget {
           theme: ThemeData(
             textTheme:
                 TextTheme(headline1: TextStyle(color: Color(0xff374ABE))),
-            primarySwatch: Colors.amber,
+            primarySwatch: Colors.blue,
             visualDensity: VisualDensity.adaptivePlatformDensity,
           ),
-          home: UserProfileScreen()),
+          home: WishList()),
     );
   }
 }
