@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import '../widgets/chart.dart';
 import 'package:charts_flutter/flutter.dart' as charts;
+import '../providers/user.dart';
+import 'package:provider/provider.dart';
 
 class UserProfileScreen extends StatelessWidget {
   final List<Progress> data = [
@@ -27,6 +29,7 @@ class UserProfileScreen extends StatelessWidget {
   ];
   @override
   Widget build(BuildContext context) {
+    User user = Provider.of<Users>(context).user;
     return Container(
         height: MediaQuery.of(context).size.height * 0.8,
         child: Column(
@@ -50,13 +53,13 @@ class UserProfileScreen extends StatelessWidget {
                                 image: NetworkImage(
                                     'https://i.kinja-img.com/gawker-media/image/upload/t_original/ijsi5fzb1nbkbhxa2gc1.png'))),
                       ),
-                      Text('John Doe')
+                      Text('${user.name}')
                     ],
                   ),
                   Column(
                     children: [
                       Text(
-                        '100 Points',
+                        '${user.points} Points',
                         style: TextStyle(fontSize: 20),
                       ),
                     ],

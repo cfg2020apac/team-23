@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import '../providers/user.dart';
 
 class WishTile extends StatelessWidget {
   final String id;
@@ -38,7 +40,9 @@ class WishTile extends StatelessWidget {
               padding: EdgeInsets.only(bottom: 20),
               height: 80.0,
               child: RaisedButton(
-                onPressed: () {},
+                onPressed: () {
+                  Provider.of<Users>(context).changePoints(-1);
+                },
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(80.0)),
                 padding: EdgeInsets.all(0.0),
