@@ -7,6 +7,7 @@ import './screens/events_screen.dart';
 import 'package:provider/provider.dart';
 import './providers/events.dart';
 import 'screens/events_screen.dart';
+import './providers/user.dart';
 
 void main() {
   runApp(MyApp());
@@ -16,7 +17,10 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MultiProvider(
-      providers: [ChangeNotifierProvider.value(value: Events())],
+      providers: [
+        ChangeNotifierProvider.value(value: Events()),
+        ChangeNotifierProvider.value(value: (Users()))
+      ],
       child: MaterialApp(
           title: 'Flutter Demo',
           theme: ThemeData(
