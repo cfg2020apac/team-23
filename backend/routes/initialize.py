@@ -22,17 +22,15 @@ data = {
    },
   "eventDetails":{
       "sample":{
-         "ageMax":0,
-         "ageMin":0,
-         "dateDeadline":0,
-         "dateEvent":0,
-         "datePost":0,
-         "id":"0",
-         "tag":"0",
-         "thumbUrl":"0",
-         "title":"0",
-         "users":0,
-         "usersMax":0
+         "desc":"this is description",
+         "videoUrl":"youtube.url.or.googlevideo.com",
+      }
+   },
+  "wishlist":{
+      "id001":{
+         "requestedBy":"userId001",
+         "pointsDevoted":50,
+         "approved": False
       }
    },
    "users":{

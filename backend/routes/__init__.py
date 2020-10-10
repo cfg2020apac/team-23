@@ -24,4 +24,4 @@ app = Flask(__name__)
 from routes import initialize
 from routes import users
 from routes import events
-from routes import eventDeats
+from routes import eventDetails
